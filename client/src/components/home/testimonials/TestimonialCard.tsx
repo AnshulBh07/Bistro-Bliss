@@ -3,7 +3,6 @@ import styles from "../../../sass/testimonialCardStyles.module.scss";
 import { testimonialItem } from "../../../services/data/testimonials";
 
 interface IProps {
-  key: number;
   data: testimonialItem;
 }
 
