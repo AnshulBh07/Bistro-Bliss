@@ -1,0 +1,7 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(column, 0rem, flex-start, center);
+  margin-top: 7.9rem;
+}

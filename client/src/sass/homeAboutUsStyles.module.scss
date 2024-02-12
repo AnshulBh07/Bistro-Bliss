@@ -1,0 +1,52 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(row, 8rem, space-between, center);
+  padding: 5rem 8rem;
+  padding-bottom: 8rem;
+  background-color: $bg2;
+
+  .img_container {
+    @include flexProp(column, 0rem, flex-start, center);
+    min-height: fit-content;
+    width: 50%;
+    position: relative;
+
+    .foodRoll {
+      height: 32rem;
+      width: 32rem;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  .info_container {
+    @include flexProp(column, 2rem, flex-start, flex-start);
+    width: 50%;
+
+    .heading {
+      font-family: "playfair display", sans-serif;
+      font-size: 3rem;
+      font-weight: 500;
+    }
+
+    .para1 {
+      font-family: "dm sans", sans-serif;
+      font-weight: 550;
+      font-size: 1rem;
+      line-height: 25px;
+    }
+
+    .para2 {
+      font-family: "dm sans", sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .moreBtn {
+      @include BtnWhite;
+      padding: 0.6rem 1.5rem;
+      border-width: 1.7px;
+    }
+  }
+}

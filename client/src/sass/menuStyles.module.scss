@@ -1,0 +1,45 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(column, 0rem, flex-start, center);
+  margin-top: 8rem;
+  position: relative;
+
+  .title {
+    @include flexProp(column, 1rem, flex-start, center);
+    padding: 4rem 8rem;
+
+    h1 {
+      font-family: "playfair display", sans-serif;
+      font-size: 5rem;
+      font-weight: 550;
+      text-transform: capitalize;
+      color: $card-bg;
+    }
+
+    p {
+      font-family: "dm sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      width: 45%;
+      text-align: center;
+      line-height: 25px;
+    }
+  }
+
+  .items {
+    padding: 2rem 8rem;
+    padding-top: 0rem;
+    width: 100%;
+    min-height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    justify-items: center;
+    grid-auto-flow: row;
+    align-items: center;
+    overflow: hidden;
+  }
+}

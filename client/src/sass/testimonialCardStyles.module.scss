@@ -1,0 +1,67 @@
+@import "../sass/mixins.scss";
+@import "../sass//variables.scss";
+
+.container {
+  flex-shrink: 0;
+
+  @include flexProp(column, 1.5rem, space-between, flex-start);
+  height: 25rem;
+  padding: 3rem 2rem;
+  width: 22rem;
+  background-color: $bg2;
+  border-radius: 15px;
+  font-family: "dm sans", sans-serif;
+
+  .quote {
+    color: $icon-bg;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .desc {
+    font-size: 0.9rem;
+    line-height: 25px;
+  }
+
+  .details {
+    @include flexProp(column, 1.5rem, flex-start, flex-start);
+
+    .separator {
+      width: 100%;
+      border: 1px solid $menu-icon-bg;
+    }
+
+    .personal_info {
+      @include flexProp(row, 2rem, flex-start, center);
+
+      .img_container {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .pic {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .personal_details {
+        @include flexProp(column, 0.5rem, flex-start, flex-start);
+        width: 50%;
+        font-size: 0.9rem;
+
+        .name {
+          text-transform: capitalize;
+          font-weight: 600;
+        }
+
+        .location {
+          text-transform: capitalize;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import "../sass/mixins.scss";
+@import "../sass/variables.scss";
+
+.container {
+  @include flexProp(column, 3rem, center, center);
+  padding: 5rem 8rem;
+
+  .heading {
+    font-family: "playfair display", sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .slider_wrapper {
+    width: 92%;
+  }
+}

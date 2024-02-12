@@ -1,0 +1,62 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.options {
+  @include flexProp(column, 1.3rem, flex-start, flex-start);
+  width: 70%;
+  height: 100%;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  overflow: auto;
+  font-size: 0.9rem;
+
+  p {
+    text-transform: uppercase;
+  }
+
+  .option_wrapper {
+    @include flexProp(row, 0.5rem, flex-start, center);
+    cursor: pointer;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    .radio {
+      height: 1rem;
+      width: 1rem;
+      background-color: $bg1;
+      border: 2px solid $icon-bg;
+      padding: 0.1rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+
+      span {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        background-color: $icon-bg;
+      }
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkbox {
+      height: 1.2rem;
+      width: 1.2rem;
+      border: 2px solid $card-bg;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+
+      .check {
+        height: 80%;
+        width: 80%;
+        color: $bg1;
+      }
+    }
+  }
+}

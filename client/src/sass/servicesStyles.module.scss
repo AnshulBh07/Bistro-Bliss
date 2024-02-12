@@ -1,0 +1,21 @@
+@import "../sass/mixins.scss";
+@import "../sass/variables.scss";
+
+.container {
+  @include flexProp(column, 2rem, flex-start, flex-start);
+  padding: 4rem 8rem;
+  background-color: $bg1;
+
+  .heading {
+    font-family: "playfair display", sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    width: 50%;
+  }
+
+  .services_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}

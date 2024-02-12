@@ -1,0 +1,203 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(column, 0rem, flex-start, center);
+  height: 60vh;
+  width: 50vw;
+  z-index: 4;
+  background-color: $bg1;
+  border-radius: 20px;
+  font-family: "dm sans", sans-serif;
+  overflow: hidden;
+  color: $card-bg;
+  position: relative;
+  animation: modalAppear 0.15s ease forwards;
+
+  .title {
+    @include flexProp(row, 0rem, space-between, flex-end);
+    padding: 1rem;
+    height: 15%;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid $navbtn-hover;
+
+    .close_btn {
+      height: 1.8rem;
+      width: 1.8rem;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 2px 2px 5px rgb(221, 221, 221);
+      background-color: $bg1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      scale: 1;
+
+      .icon {
+        height: 1rem;
+        width: 1rem;
+      }
+
+      &:active {
+        scale: 0.95;
+      }
+    }
+  }
+
+  .wrapper {
+    @include flexProp(row, 0rem, space-between, center);
+    height: 85%;
+
+    .category_wrapper {
+      width: 30%;
+      height: 100%;
+      background-color: $bg1;
+      overflow: auto;
+      border-right: 1px solid $navbtn-hover;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .category_list {
+        @include flexProp(column, 0rem, flex-start, center);
+        list-style-type: none;
+
+        li {
+          @include flexProp(row, 0rem, flex-start, center);
+
+          .tooltip {
+            align-self: stretch;
+            width: 0.5rem;
+            background-color: $icon-bg;
+          }
+
+          .categoryItem {
+            width: 100%;
+            text-align: start;
+            padding: 1rem;
+            font-family: "dm dans", sans-serif;
+            font-size: 1.1rem;
+            font-weight: 550;
+            text-transform: capitalize;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+
+            &:hover {
+              background-color: $bg2;
+            }
+          }
+        }
+      }
+    }
+
+    .options {
+      @include flexProp(column, 1.3rem, flex-start, flex-start);
+      width: 70%;
+      height: 100%;
+      padding: 1rem 2rem;
+      text-transform: capitalize;
+      overflow: auto;
+      font-size: 0.9rem;
+
+      p {
+        text-transform: uppercase;
+      }
+
+      .option_wrapper {
+        @include flexProp(row, 0.5rem, flex-start, center);
+        cursor: pointer;
+
+        input[type="radio"] {
+          display: none;
+        }
+
+        .radio {
+          height: 1rem;
+          width: 1rem;
+          background-color: $bg1;
+          border: 2px solid $icon-bg;
+          padding: 0.1rem;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+
+          span {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            background-color: $icon-bg;
+          }
+        }
+
+        input[type="checkbox"] {
+          display: none;
+        }
+
+        .checkbox {
+          height: 1.2rem;
+          width: 1.2rem;
+          border: 2px solid $card-bg;
+          display: grid;
+          place-items: center;
+          border-radius: 5px;
+
+          .check {
+            height: 80%;
+            width: 80%;
+            color: $bg1;
+          }
+        }
+      }
+    }
+  }
+
+  .apply_wrapper {
+    @include flexProp(row, 2rem, flex-end, center);
+    background-color: $bg1;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 -5px 5px rgb(216, 216, 216);
+    height: 13%;
+
+    .clear_btn {
+      font-size: 1.1rem;
+      text-transform: capitalize;
+      font-weight: 600;
+      color: $icon-bg;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .apply_btn {
+      font-size: 1.1rem;
+      font-weight: 600;
+      background-color: $icon-bg;
+      color: $bg1;
+      text-transform: capitalize;
+      padding: 0.5rem;
+      width: 8rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:hover {
+        scale: 0.97;
+      }
+    }
+  }
+}
+
+@keyframes modalAppear {
+  0% {
+    scale: 0;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}

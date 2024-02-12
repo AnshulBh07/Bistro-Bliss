@@ -1,0 +1,51 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(row, 4rem, space-between, center);
+  padding: 5rem 8rem;
+  background-color: $bg2;
+
+  .text {
+    @include flexProp(column, 2rem, center, flex-start);
+    width: 40%;
+
+    h1 {
+      font-family: "playfair display", sans-serif;
+      font-weight: 500;
+      font-size: 3rem;
+      line-height: 50px;
+    }
+
+    p {
+      font-family: "dm sans", sans-serif;
+      font-weight: 500;
+      line-height: 25px;
+    }
+  }
+
+  .logo_wrapper {
+    @include flexProp(row, 0rem, center, center);
+    gap: 2rem 1rem; //row-gap col-gap
+    flex-wrap: wrap;
+
+    .logo_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 6rem;
+      width: 12rem;
+      padding: 1.5rem 1.5rem;
+      background-color: $bg1;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 0 20px rgb(212, 212, 212);
+
+      .logo_img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

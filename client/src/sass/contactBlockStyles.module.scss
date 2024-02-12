@@ -1,0 +1,36 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(column, 2.5rem, flex-start, flex-start);
+  background-color: $card-bg;
+  color: $bg1;
+  font-family: "dm sans", sans-serif;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  width: 23rem;
+  position: absolute;
+  opacity: 0.95;
+  min-height: fit-content;
+  top: 55%;
+  left: 40%;
+
+  .heading {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .info {
+    font-size: 0.9rem;
+    @include flexProp(column, 1rem, flex-start, flex-start);
+
+    .desc {
+      @include flexProp(row, 1rem, flex-start, center);
+    }
+
+    .icon {
+      height: 1.2rem;
+      width: 1.2rem;
+    }
+  }
+}

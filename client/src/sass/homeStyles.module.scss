@@ -1,0 +1,7 @@
+@import "../sass/mixins.scss";
+@import "../sass/variables.scss";
+
+.container {
+  @include flexProp(column, 0rem, flex-start, center);
+  min-height: 100vh;
+}

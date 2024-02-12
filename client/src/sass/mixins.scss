@@ -1,0 +1,61 @@
+@mixin flexProp($direction, $gap, $justification, $alignment) {
+  display: flex;
+  gap: $gap;
+  justify-content: $justification;
+  flex-direction: $direction;
+  align-items: $alignment;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+@mixin socialMediaBtns($bgcolor, $fgcolor) {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: none;
+  background-color: $bgcolor;
+  color: $fgcolor;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+@mixin navButton {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.4rem 0.7rem;
+  border-radius: 20px;
+  width: 6rem;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    background-color: $navbtn-hover;
+    transition: background-color 0.4s ease-in-out;
+  }
+
+  &:active {
+    background-color: $link-active;
+  }
+}
+
+@mixin BtnWhite {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "DM sans", sans-serif;
+  text-transform: capitalize;
+  border-radius: 20px;
+  background-color: transparent;
+  border: 2px solid $card-bg;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $bg2;
+    transition: all 0.1s ease-in-out;
+  }
+}

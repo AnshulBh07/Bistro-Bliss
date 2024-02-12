@@ -1,0 +1,36 @@
+@import "../sass/mixins.scss";
+@import "../sass/variables.scss";
+
+.container {
+  @include flexProp(row, 0rem, space-between, center);
+  padding: 0.8rem 8rem;
+  color: $bg1;
+  background-color: $card-bg;
+
+  .phone_email {
+    @include flexProp(row, 0.9rem, flex-start, center);
+    font-size: 0.9rem;
+    width: 34%;
+    font-family: "DM sans", sans-serif;
+
+    .phone,
+    .email {
+      @include flexProp(row, 0.4rem, flex-start, center);
+      cursor: pointer;
+
+      .icon {
+        height: 1.2rem;
+        width: 1.2rem;
+      }
+    }
+  }
+
+  .icons {
+    @include flexProp(row, 0.3rem, flex-end, center);
+
+    .btn_icon {
+      @include socialMediaBtns($card-bg, $bg1);
+      background-color: #5a5a5a;
+    }
+  }
+}

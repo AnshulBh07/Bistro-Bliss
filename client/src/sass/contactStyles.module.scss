@@ -1,0 +1,179 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(column, 0rem, flex-start, center);
+  min-height: 100vh;
+  position: relative;
+
+  .bg1 {
+    width: 100%;
+    height: 40rem;
+    background-color: $bg2;
+  }
+
+  .bg2 {
+    width: 100%;
+    height: 40rem;
+    background-color: $bg1;
+  }
+
+  .form_wrapper {
+    @include flexProp(column, 3rem, center, center);
+    min-height: fit-content;
+    position: absolute;
+    margin-top: 12rem;
+    z-index: 2;
+
+    .heading {
+      @include flexProp(column, 0.7rem, center, center);
+
+      h1 {
+        font-size: 5rem;
+        font-family: "playfair display", sans-serif;
+        font-weight: 550;
+        color: $card-bg;
+        text-transform: capitalize;
+      }
+
+      p {
+        width: 30%;
+        text-align: center;
+        font-family: "dm sans", sans-serif;
+        font-size: 1rem;
+        line-height: 25px;
+      }
+    }
+
+    .contact_form {
+      padding: 2rem;
+      border-radius: 20px;
+      @include flexProp(column, 1.5rem, flex-start, flex-start);
+      width: 50%;
+      font-family: "dm sans", sans-serif;
+      box-shadow: 0 0 20px rgb(198, 198, 198);
+      background-color: #fff;
+
+      .name_email_wrapper {
+        @include flexProp(row, 2rem, space-between, center);
+
+        label {
+          @include flexProp(column, 0.5rem, flex-start, flex-start);
+          width: 50%;
+
+          p {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: capitalize;
+          }
+
+          .input_field {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid $footer-text;
+            font-family: "dm sans", sans-serif;
+            font-size: 1rem;
+
+            &::placeholder {
+              font-size: 0.8rem;
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+
+      label {
+        @include flexProp(column, 0.5rem, flex-start, flex-start);
+
+        p {
+          font-weight: 600;
+          font-size: 0.9rem;
+          text-transform: capitalize;
+          @include flexProp(row, 0rem, space-between, center);
+
+          span {
+            opacity: 0.3;
+          }
+        }
+
+        .input_field {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          border-radius: 30px;
+          border: 1px solid $footer-text;
+          font-family: "dm sans", sans-serif;
+          font-size: 1rem;
+
+          &::placeholder {
+            font-size: 0.8rem;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .message {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          border: 1px solid $footer-text;
+          border-radius: 20px;
+          font-size: 1rem;
+          font-family: "dm sans", sans-serif;
+
+          &::placeholder {
+            font-size: 0.8rem;
+            font-family: "dm sans", sans-serif;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .send_btn {
+        @include BtnWhite;
+        width: 100%;
+        border-color: $icon-bg;
+        color: #fff;
+        font-size: 1rem;
+        background-color: $icon-bg;
+        padding: 1rem;
+        border-radius: 30px;
+
+        &:hover {
+          background-color: $icon-bg;
+        }
+
+        &:focus {
+          background-color: #9a353d;
+          outline: none;
+        }
+      }
+    }
+
+    .info {
+      @include flexProp(row, 4rem, center, center);
+      width: 50%;
+
+      p {
+        @include flexProp(column, 1.4rem, flex-start, flex-start);
+        width: 33%;
+        font-family: "dm sans", sans-serif;
+        text-transform: capitalize;
+        font-size: 0.9rem;
+        align-self: flex-start;
+        line-height: 25px;
+
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

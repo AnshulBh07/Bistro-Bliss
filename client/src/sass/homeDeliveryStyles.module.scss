@@ -1,0 +1,80 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(row, 5rem, space-between, center);
+  padding: 5rem 8rem;
+  background-color: $bg2;
+
+  .img_container {
+    @include flexProp(row, 1rem, space-between, flex-start);
+    width: 60%;
+    height: 37rem;
+
+    .chef {
+      width: 60%;
+      height: 95%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .img_cont2 {
+      @include flexProp(column, 1rem, space-between, flex-start);
+      width: 40%;
+      height: 90%;
+      align-self: flex-end;
+
+      .pan {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .fruits {
+        width: 100%;
+        height: 40%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .info {
+    @include flexProp(column, 3rem, flex-start, flex-start);
+    width: 35%;
+
+    .header {
+      @include flexProp(column, 2rem, flex-start, flex-start);
+
+      .heading {
+        font-family: "playfair display", sans-serif;
+        font-size: 3rem;
+        font-weight: 500;
+        line-height: 60px;
+      }
+
+      .intro {
+        font-family: "dm sans", sans-serif;
+        font-size: 1rem;
+      }
+    }
+
+    .features {
+      @include flexProp(column, 1.5rem, flex-start, flex-start);
+
+      p {
+        @include flexProp(row, 1rem, flex-start, center);
+
+        .icon {
+          background-color: $icon-bg;
+          color: $bg1;
+          padding: 0.5rem;
+          height: 2rem;
+          width: 2rem;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

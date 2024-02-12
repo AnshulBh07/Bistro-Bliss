@@ -1,0 +1,21 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(row, 1.5rem, space-between, flex-start);
+  width: 26%;
+  font-family: "dm sans", sans-serif;
+
+  .info {
+    @include flexProp(column, 1rem, flex-start, flex-start);
+
+    .title {
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .desc {
+      font-size: 0.8rem;
+    }
+  }
+}

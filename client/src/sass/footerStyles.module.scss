@@ -1,0 +1,119 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(column, 7rem, space-between, center);
+  padding: 5rem 8rem;
+  padding-bottom: 3rem;
+  background-color: $card-bg;
+
+  .top {
+    @include flexProp(row, 0rem, space-between, flex-start);
+    font-family: "dm sans", sans-serif;
+    font-size: 0.9rem;
+
+    .brand {
+      @include flexProp(column, 1rem, flex-start, flex-start);
+      width: auto;
+
+      .logo {
+        @include flexProp(row, 0.7rem, flex-start, center);
+        font-family: "playfair display", sans-serif;
+        font-style: italic;
+        text-transform: capitalize;
+        color: $bg1;
+        font-size: 1.5rem;
+
+        .logo2 {
+          height: 2.5rem;
+          width: 2.5rem;
+        }
+      }
+
+      .tagline {
+        color: $footer-text;
+      }
+
+      .icons {
+        @include flexProp(row, 0.3rem, flex-start, center);
+
+        .btn_icon {
+          @include socialMediaBtns($card-bg, $bg1);
+          background-color: $icon-bg;
+        }
+      }
+    }
+
+    .links_wrapper {
+      @include flexProp(column, 2rem, flex-start, flex-start);
+      width: auto;
+      text-transform: capitalize;
+
+      .heading {
+        font-weight: 500;
+        color: $bg1;
+      }
+
+      .links {
+        list-style-type: none;
+        @include flexProp(column, 1rem, flex-start, flex-start);
+
+        li {
+          a {
+            text-decoration: none;
+            color: $footer-text;
+          }
+        }
+      }
+    }
+
+    .img_container {
+      font-weight: 500;
+      text-transform: capitalize;
+      color: $bg1;
+      @include flexProp(column, 2rem, flex-start, flex-start);
+      width: auto;
+
+      .img_grid {
+        width: 25rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 1rem;
+
+        div {
+          height: 10rem;
+          width: 12rem;
+          border-radius: 10px;
+          overflow: hidden;
+
+          .footer_img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom {
+    @include flexProp(column, 1.5rem, center, center);
+
+    .separator {
+      width: 100%;
+      border: 0.5px solid gray;
+    }
+
+    .copyright {
+      font-weight: 500;
+      color: $footer-text;
+      text-transform: capitalize;
+      font-size: 0.8rem;
+
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+}

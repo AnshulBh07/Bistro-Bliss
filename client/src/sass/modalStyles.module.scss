@@ -1,0 +1,12 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(row, 0rem, center, center);
+  min-height: 100vh;
+  background-color: rgba($color: $card-bg, $alpha: 0.5);
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
