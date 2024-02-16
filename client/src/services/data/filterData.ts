@@ -103,6 +103,10 @@ export const cost42List: string[] = [
 
 export const typeList: string[] = [
   "breakfast",
+  "dinner",
+  "lunch",
+  "starter",
+  "rice",
   "dessert",
   "main dishes",
   "drinks",

@@ -15,7 +15,7 @@ export const Video: React.FC = () => {
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/jK5MSloH7ng?si=wUxotrXi3DovyMq5&autoplay=1&hd=1&playlist=jK5MSloH7ng&loop=1&muted=1&showinfo=0"
+          src="https://www.youtube.com/embed/jK5MSloH7ng?si=wUxotrXi3DovyMq5&autoplay=1&vq=hd1080p&playlist=jK5MSloH7ng&loop=1&muted=1&showinfo=0"
           title="YouTube video player"
           frameBorder={0}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

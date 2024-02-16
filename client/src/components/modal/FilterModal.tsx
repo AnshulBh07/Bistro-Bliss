@@ -12,6 +12,9 @@ import {
   sortTypes,
   typeList,
   paramsList,
+  sortMap,
+  deliveryMap,
+  ratingMap,
 } from "../../services/data/filterData";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +26,7 @@ import { CheckBoxList } from "./CheckBoxList";
 export const FilterModal: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const state = useSelector((state: RootState) => state.filter);
-  const { category, showButtons } = state;
+  const { category, showButtons, cuisines, offers, selected, explore } = state;
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -45,6 +48,105 @@ export const FilterModal: React.FC = () => {
 
   // logic to set all the filters in search params after apply click
   const handleApplyClick = () => {
+    // now we have two types of inputs, radio input and checkbox
+    // 1. checking for sort type
+    if (selected[0] !== -1) {
+      searchParams.set(paramsList[0], sortMap.get(selected[0])!);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[0]);
+      setSearchParams(searchParams);
+    }
+
+    // 2. for delivery
+    if (selected[1] !== -1) {
+      searchParams.set(paramsList[1], deliveryMap.get(selected[1])!);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[1]);
+      setSearchParams(searchParams);
+    }
+
+    // 3. for cuisines
+    if (cuisines.length > 0) {
+      // create a string of cuisines type separated by +
+      let cuisineParam: string = "";
+
+      for (let i = 0; i < cuisines.length; i++) {
+        cuisineParam += cuisinesList[cuisines[i]] + "-";
+      }
+
+      cuisineParam = cuisineParam.slice(0, cuisineParam.length - 1);
+
+      searchParams.set(paramsList[2], cuisineParam);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[2]);
+      setSearchParams(searchParams);
+    }
+
+    // 4. for explore
+    if (explore.length > 0) {
+      let exploreParam: string = "";
+
+      for (let i = 0; i < explore.length; i++) {
+        exploreParam += exploreList[explore[i]] + "-";
+      }
+
+      exploreParam = exploreParam.slice(0, exploreParam.length - 1);
+
+      searchParams.set(paramsList[3], exploreParam);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[3]);
+      setSearchParams(searchParams);
+    }
+
+    // 5. ratings
+    if (selected[4] !== -1) {
+      searchParams.set(paramsList[4], String(ratingMap.get(selected[4])!));
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[4]);
+      setSearchParams(searchParams);
+    }
+
+    // 6. veg or non veg
+    if (selected[5] !== -1) {
+      searchParams.set(paramsList[5], String(selected[5]));
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[5]);
+      setSearchParams(searchParams);
+    }
+
+    // 7. offers
+    if (offers.length > 0) {
+      let offerParam: string = "";
+
+      for (let i = 0; i < offers.length; i++) {
+        offerParam += offersList[offers[i]] + "-";
+      }
+
+      offerParam = offerParam.slice(0, offerParam.length - 1);
+
+      searchParams.set(paramsList[6], offerParam);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[6]);
+      setSearchParams(searchParams);
+    }
+
+    // 8 cost for two
+    // 9 for type
+    if (selected[8] !== -1) {
+      searchParams.set(paramsList[8], typeList[selected[8]]);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete(paramsList[8]);
+      setSearchParams(searchParams);
+    }
+
     dispatch({ type: "filter/show" });
   };
 

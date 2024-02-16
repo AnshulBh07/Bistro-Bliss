@@ -5,20 +5,31 @@ import { formatToCurrency } from "../../services/helper-functions/formatCurrency
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { IoStar } from "react-icons/io5";
 import { IoStarHalfOutline } from "react-icons/io5";
+import { AppDispatch } from "../../store";
+import { useDispatch } from "react-redux";
+import { IMenuItem } from "../../services/helper-functions/interfaces";
 
-export const MenuItemCard: React.FC = () => {
+interface IProps {
+  itemData: IMenuItem;
+  key: number;
+}
+
+export const MenuItemCard: React.FC<IProps> = ({ itemData }) => {
+  const dispatch: AppDispatch = useDispatch();
+
+  const handleCardClick = () => {
+    dispatch({ type: "menuItemModal/show", payload: itemData });
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleCardClick}>
       <div className={styles.img_wrapper}>
-        <img
-          src="https://images.pexels.com/photos/803963/pexels-photo-803963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="pasta"
-        />
+        <img src={itemData.image} alt={itemData.title} />
       </div>
 
       <div className={styles.info}>
         <div className={styles.rating}>
-          {calculateStars(4.5).map((item, index) => {
+          {calculateStars(itemData.rating).map((item, index) => {
             if (item === 1)
               return <IoStar className={styles.icon} key={index} />;
 
@@ -27,10 +38,10 @@ export const MenuItemCard: React.FC = () => {
         </div>
         <p className={styles.price}>
           <FaIndianRupeeSign className={styles.rupee} />
-          {formatToCurrency(78651)}
+          {formatToCurrency(itemData.price)}
         </p>
-        <p className={styles.title}>white sauce pasta</p>
-        <p className={styles.intro}>Made of milk ,butter and flour</p>
+        <p className={styles.title}>{itemData.title}</p>
+        <p className={styles.intro}>{itemData.description}</p>
       </div>
     </div>
   );

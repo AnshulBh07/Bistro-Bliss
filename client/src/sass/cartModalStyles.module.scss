@@ -1,0 +1,105 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(column, 0.5rem, space-between, center);
+  min-height: fit-content;
+  width: 28rem;
+  background-color: $bg1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 4.3rem 8rem;
+  box-shadow: 0px 0px 20px rgb(181, 181, 181);
+  padding: 1.2rem;
+  animation: appear 0.7s ease forwards;
+  font-family: "dm sans", sans-serif;
+
+  &::before {
+    content: "";
+    height: 0.1rem;
+    width: 100%;
+    background-color: $icon-bg;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    content: "";
+    height: 0.8rem;
+    width: 0.8rem;
+    background-color: $bg1;
+    border: 1.6px solid $icon-bg;
+    border-bottom: none;
+    border-right: none;
+    position: absolute;
+    top: -1.6%;
+    right: 2.5%;
+    transform: rotateZ(45deg);
+  }
+
+  .heading {
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .tiles_wrapper {
+    @include flexProp(column, 0.4rem, flex-start, center);
+    overflow: auto;
+    min-height: 10rem;
+    max-height: 22rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .button_wrapper {
+    @include flexProp(column, 1rem, center, center);
+
+    p {
+      @include flexProp(row, 0rem, space-between, center);
+      width: 90%;
+      margin: 0.7rem 0;
+      font-weight: 600;
+      text-transform: capitalize;
+
+      span {
+        @include flexProp(row, 0.3rem, center, center);
+        width: auto;
+        color: $icon-bg;
+      }
+    }
+
+    .checkout_btn {
+      @include BtnWhite;
+      border: none;
+      background-color: $icon-bg;
+      color: $bg1;
+      border-radius: 5px;
+      width: 60%;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: $icon-bg;
+        border: none;
+        box-shadow: 0 0 15px rgb(176, 176, 176);
+      }
+    }
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

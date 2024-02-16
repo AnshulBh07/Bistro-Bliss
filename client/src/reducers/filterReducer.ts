@@ -2,18 +2,24 @@ import { allCategories, categories } from "../services/data/filterData";
 import { appliedIncludes } from "../services/helper-functions/appliedRadioIncludes";
 import { IFilterData } from "../services/helper-functions/interfaces";
 
+export interface applied {
+  category: number;
+  index: number;
+  value: string;
+}
+
 // check if we have a state present in local storage, if we do use that
 const val: IFilterData | null = JSON.parse(localStorage.getItem("filters")!);
 
-const iniState = {
+const iniState: IFilterData = {
   showFilterModal: false,
   category: 0,
-  selected: new Array(categories.length).fill(-1),
+  selected: new Array<number>(categories.length).fill(-1),
   showButtons: false,
-  cuisines: [],
-  explore: [],
-  offers: [],
-  appliedFilters: [],
+  cuisines: new Array<number>(),
+  explore: new Array<number>(),
+  offers: new Array<number>(),
+  appliedFilters: new Array<applied>(),
 };
 
 const initialState: IFilterData = val ? val : iniState;

@@ -1,0 +1,138 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(row, 1rem, flex-start, flex-start);
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: $bg2;
+
+  .qty_bar {
+    height: 5rem;
+    @include flexProp(column, 0rem, center, center);
+    width: 3rem;
+    border: 1px solid $card-bg;
+    border-radius: 5px;
+    flex-shrink: 0;
+
+    .decQty_btn {
+      height: 33%;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      animation: moveUp 0.5s ease forwards;
+    }
+
+    p {
+      height: 33%;
+      width: 100%;
+      text-align: center;
+      padding-top: 0.1rem;
+      font-weight: 600;
+    }
+
+    .incQty_btn {
+      height: 33%;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      animation: moveDown 0.5s ease forwards;
+    }
+  }
+
+  .img_wrapper {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 5px;
+    overflow: hidden;
+    align-self: center;
+    flex-shrink: 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .remove_btn {
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    background-color: rgb(255, 208, 208);
+    border: none;
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    .remove_icon {
+      height: 80%;
+      width: 80%;
+    }
+  }
+
+  .info_wrapper {
+    @include flexProp(column, 0.5rem, flex-start, flex-start);
+    width: auto;
+
+    img {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .title {
+      font-weight: 600;
+      text-transform: capitalize;
+      text-align: left;
+    }
+
+    .price {
+      @include flexProp(row, 0.2rem, center, center);
+      width: auto;
+      font-weight: 600;
+      color: $card-bg;
+
+      .rupee_icon {
+        color: $card-bg;
+      }
+    }
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

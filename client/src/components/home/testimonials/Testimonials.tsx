@@ -23,8 +23,6 @@ export const Testimonials: React.FC = () => {
         spaceBetween={50}
         slidesPerView={3}
         autoplay={{ delay: 4000 }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
         className={styles.slider_wrapper}
       >
         {testimonialsList.map((item, index) => {

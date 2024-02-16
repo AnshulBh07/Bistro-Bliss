@@ -10,7 +10,7 @@ function reverseString(s: string) {
 
 export const formatToCurrency: (a: number) => string = (value: number) => {
   //   if the number is between 0 to 9000
-  if (value.toString().length < 5) return value.toString();
+  if (value.toString().length < 4) return value.toString();
 
   // else reverse the string and format it
   const str: string = value.toString();

@@ -5,18 +5,24 @@ import Logo from "../../assets/images/logo.png";
 import { navItems } from "../../services/data/navItemsList";
 import { NavigateFunction, useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
+import { GiShoppingBag } from "react-icons/gi";
+import { CartModal } from "../modal/CartModal";
+import { useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { useDispatch } from "react-redux";
 
 const Header: React.FC = () => {
   const navigate: NavigateFunction = useNavigate();
   const location = useLocation();
   const { pathname } = location;
-
-  //   console.log(pathname);
+  const { showCartModal } = useSelector((state: RootState) => state.cart);
+  const dispatch: AppDispatch = useDispatch();
 
   // here we will use a useEffect which contains an intersection observer that observes Topbar,
   // when top bar goes out of view the navbar will become sticky (position fixed)
   // a state that stores visibility of top bar, initially true
   const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>();
   // a ref that holds top bar
   const barRef = useRef<HTMLDivElement | null>(null);
 
@@ -43,7 +49,7 @@ const Header: React.FC = () => {
   // console.log(isVisible);
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       {/* top bar */}
       <TopBar barRef={barRef} />
 
@@ -52,7 +58,11 @@ const Header: React.FC = () => {
         className={styles.header_container}
         style={
           isVisible
-            ? { position: "relative", opacity: "0.9", boxShadow: "none" }
+            ? {
+                position: "relative",
+                opacity: pathname.includes("/home") ? "0.9" : "1",
+                boxShadow: "none",
+              }
             : {
                 position: "fixed",
                 opacity: "1",
@@ -89,11 +99,31 @@ const Header: React.FC = () => {
         </nav>
 
         {/* book table button */}
-        <button onClick={() => navigate("/book")} className={styles.bookBtn}>
-          book a table
-        </button>
+        <div className={styles.cart_book_btn_group}>
+          <button onClick={() => navigate("/book")} className={styles.bookBtn}>
+            book a table
+          </button>
+
+          <button
+            className={styles.cart_btn}
+            onMouseEnter={() => dispatch({ type: "cart/show" })}
+            onMouseLeave={() => {
+              const id = setTimeout(() => {
+                dispatch({ type: "cart/hide" });
+              }, 400);
+
+              setTimeoutId(id);
+            }}
+          >
+            <GiShoppingBag className={styles.icon} />
+            <p>1</p>
+          </button>
+        </div>
+
+        {/* modal, position is set to absolute and will only render when hover on cart bag or the modal itself*/}
+        {showCartModal && <CartModal timeoutId={timeoutId!} />}
       </div>
-    </div>
+    </header>
   );
 };
 

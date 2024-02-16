@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { contactFormReducer } from "./reducers/contactFormReducer";
 import { filterReducer } from "./reducers/filterReducer";
+import { menuItemReducer } from "./reducers/menuItemReducer";
+import { cartReducer } from "./reducers/cartReducer";
 
 export const store = configureStore({
   reducer: {
     contactForm: contactFormReducer,
     filter: filterReducer,
+    menuItem: menuItemReducer,
+    cart: cartReducer,
   },
 });
 

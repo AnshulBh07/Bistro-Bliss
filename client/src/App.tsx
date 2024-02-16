@@ -10,6 +10,7 @@ import { Footer } from "./components/Footer/Footer";
 // minimize accessing states in App component to reduce rerendering of entire app
 function App() {
   console.log("rendering App....");
+
   return (
     <div className={styles.container_app}>
       <Header />
