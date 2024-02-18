@@ -22,7 +22,7 @@ connectToDb((err) => {
     app.listen(port, () => console.log(`server started on port ${port}`));
     db = getDb();
     // console.log(db);
-  }
+  } else console.error;
 });
 
 app.get("/", (req: Request, res: Response) => {
@@ -33,8 +33,7 @@ app.get("/menu_items", async (req: Request, res: Response) => {
   const page = Number(req.query.page);
   const allParams = String(req.query.paramsObject);
 
-  const paramsObj: paramsObjectType = JSON.parse(allParams);
-  console.log(paramsObj);
+  // const paramsObj: paramsObjectType  = JSON.parse(allParams);
 
   try {
     let query = {};
@@ -48,11 +47,12 @@ app.get("/menu_items", async (req: Request, res: Response) => {
       .toArray(); //this here returns a cursor/ iterator, iterate it and push stuff to array
 
     // now let us filter this data
-    results = filterResults(results, paramsObj);
+    // results = filterResults(results, paramsObj);
 
     // apply pagination
-    results = results.slice(8 * page, 8 * page + 8);
+    // results = results.slice(8 * page, 8 * page + 8);
 
+    console.log(results);
     res.send(results).status(200);
   } catch (err) {
     res.send(err).status(400);
