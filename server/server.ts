@@ -34,9 +34,9 @@ app.get("/hello", (req: Request, res: Response) => {
 });
 
 app.get("/menu_items", async (req: Request, res: Response) => {
-  const cuisines = req.query.cuisines;
+  // const cuisines = req.query.cuisines;
 
-  console.log(cuisines?.length);
+  // console.log(cuisines?.length);
   try {
     let query = {};
     // the data received is in it's original form but the data when sent is converted to
