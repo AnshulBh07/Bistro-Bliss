@@ -56,7 +56,7 @@ export const CartModalItemTile: React.FC<IProps> = ({ data }) => {
         />
         <p className={styles.price}>
           <FaIndianRupeeSign className={styles.rupee_icon} />{" "}
-          {formatToCurrency(data.price)}
+          {formatToCurrency(data.price * data.quantity)}
         </p>
       </div>
 

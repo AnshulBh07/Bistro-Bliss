@@ -4,7 +4,7 @@
 .container {
   @include flexProp(column, 0.5rem, space-between, center);
   min-height: fit-content;
-  width: 28rem;
+  width: 30rem;
   background-color: $bg1;
   position: absolute;
   top: 0;

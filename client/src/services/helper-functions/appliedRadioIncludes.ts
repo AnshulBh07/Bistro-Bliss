@@ -1,4 +1,4 @@
-import { applied } from "../../reducers/filterReducer";
+import { applied } from "./interfaces";
 
 // this function is only useful for radio options, used to check whether the appliedFilters array already includes some item from category
 export const appliedIncludes = (filters: applied[], category: number) => {

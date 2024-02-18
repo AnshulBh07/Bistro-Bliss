@@ -3,24 +3,26 @@ import {
   IMenuItemModalData,
 } from "../services/helper-functions/interfaces";
 
+const initialMenuData: IMenuItem = {
+  _id: "",
+  title: "",
+  category: new Array<string>(),
+  price: -1,
+  discount: null,
+  description: null,
+  image: "",
+  rating: -1,
+  delivery_type: "fast",
+  cuisines: new Array<string>(),
+  veg: true,
+  offer: null,
+  created_at: null,
+  updated_at: null,
+  available: true,
+};
+
 const initialState: IMenuItemModalData = {
-  menuData: {
-    _id: "",
-    title: "",
-    category: new Array<string>(),
-    price: -1,
-    discount: null,
-    description: null,
-    image: "",
-    rating: -1,
-    delivery_type: "fast",
-    cuisines: new Array<string>(),
-    veg: true,
-    offer: null,
-    created_at: null,
-    updated_at: null,
-    available: true,
-  },
+  menuData: initialMenuData,
   showMenuItemModal: false,
   showQtyBar: false,
 };
@@ -34,7 +36,7 @@ export const menuItemReducer = (state = initialState, action: actionType) => {
         ...state,
         showMenuItemModal: !state.showMenuItemModal,
         menuData: {
-          ...initialState,
+          ...initialState.menuData,
           _id: action.payload!._id,
           title: action.payload!.title,
           category: initialState.menuData.category.concat(

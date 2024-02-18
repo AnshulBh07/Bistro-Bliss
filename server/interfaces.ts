@@ -18,3 +18,16 @@ export interface IMenuItem {
   created_at: Date;
   updated_at: Date;
 }
+
+export type paramsObjectType = {
+  sort: string | null;
+  delivery: "fast" | "regular" | null;
+  cuisines: string[] | null;
+  explore: string[] | null;
+  rating: number | null;
+  veg: boolean | null;
+  offer: string[] | null;
+  cost: string | null;
+  type: string | null;
+  keyword: string | null;
+};

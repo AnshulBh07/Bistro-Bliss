@@ -1,9 +1,10 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, query } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectToDb, getDb } from "./db";
-import { IMenuItem } from "./interfaces";
+import { IMenuItem, paramsObjectType } from "./interfaces";
+import { filterResults } from "./services/filterResults";
 
 dotenv.config();
 
@@ -29,6 +30,12 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/menu_items", async (req: Request, res: Response) => {
+  const page = Number(req.query.page);
+  const allParams = String(req.query.paramsObject);
+
+  const paramsObj: paramsObjectType = JSON.parse(allParams);
+  console.log(paramsObj);
+
   try {
     let query = {};
     // the data received is in it's original form but the data when sent is converted to
@@ -37,7 +44,14 @@ app.get("/menu_items", async (req: Request, res: Response) => {
     let results: IMenuItem[] = await db
       .collection("Menu")
       .find(query)
-      .toArray(); //this here returns a cursor/ iterator, iterate it and push stuff to arra
+      .sort({ title: 1 })
+      .toArray(); //this here returns a cursor/ iterator, iterate it and push stuff to array
+
+    // now let us filter this data
+    results = filterResults(results, paramsObj);
+
+    // apply pagination
+    results = results.slice(8 * page, 8 * page + 8);
 
     res.send(results).status(200);
   } catch (err) {

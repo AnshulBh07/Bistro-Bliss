@@ -10,7 +10,11 @@ import Curefoods from "../../assets/images/curefoods_logo.png";
 import Petpuja from "../../assets/images/petpuja_logo.png";
 import Swiggy from "../../assets/images/swiggy_logo.png";
 
-export const SupportedApps: React.FC = () => {
+interface IProps {
+  appsRef: React.MutableRefObject<HTMLTableSectionElement | null>;
+}
+
+export const SupportedApps: React.FC<IProps> = ({ appsRef }) => {
   const apps = [
     Zomato,
     Swiggy,
@@ -24,7 +28,7 @@ export const SupportedApps: React.FC = () => {
   ];
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} ref={appsRef}>
       <div className={styles.text}>
         <h1>You can order through apps</h1>
         <p>

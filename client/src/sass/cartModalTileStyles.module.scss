@@ -23,7 +23,7 @@
       background-color: transparent;
       border: none;
       cursor: pointer;
-      animation: moveUp 0.5s ease forwards;
+      animation: moveDown 0.5s ease forwards;
     }
 
     p {
@@ -42,12 +42,12 @@
       background-color: transparent;
       border: none;
       cursor: pointer;
-      animation: moveDown 0.5s ease forwards;
+      animation: moveUp 0.5s ease forwards;
     }
   }
 
   .img_wrapper {
-    height: 5rem;
+    height: 4rem;
     width: 5rem;
     border-radius: 5px;
     overflow: hidden;
@@ -92,6 +92,7 @@
       font-weight: 600;
       text-transform: capitalize;
       text-align: left;
+      font-size: 0.9rem;
     }
 
     .price {
@@ -99,9 +100,12 @@
       width: auto;
       font-weight: 600;
       color: $card-bg;
+      font-size: 0.9rem;
 
       .rupee_icon {
         color: $card-bg;
+        height: 0.9rem;
+        width: 0.9rem;
       }
     }
   }

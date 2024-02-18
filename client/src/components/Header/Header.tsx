@@ -81,7 +81,13 @@ const Header: React.FC = () => {
               return (
                 <li key={index} className={styles.navItem}>
                   <button
-                    onClick={() => navigate(item.link)}
+                    onClick={() => {
+                      if (item.name === "Menu") {
+                        const query = localStorage.getItem("query");
+                        if (query) navigate(item.link + JSON.parse(query));
+                      } else navigate(item.link);
+                      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                    }}
                     className={styles.navBtn}
                     // add a new style for current path, which can be derived using useLocation
                     style={{

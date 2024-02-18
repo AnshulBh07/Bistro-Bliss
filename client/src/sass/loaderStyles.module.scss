@@ -1,0 +1,13 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+  @include flexProp(row, 0rem, center, center);
+  height: 30rem;
+  background-color: $bg1;
+
+  img {
+    height: 15rem;
+    width: 15rem;
+  }
+}

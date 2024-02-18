@@ -17,19 +17,15 @@ export const sortTypes: string[] = [
   "cost low to high",
   "cost high to low",
 ];
-export const sortMap = new Map<number, string>([
-  [0, "relevance"],
-  [1, "delivery"],
-  [2, "rating"],
-  [3, "low-high"],
-  [4, "high-low"],
-]);
+export const sortParamsList: string[] = [
+  "relevance",
+  "delivery",
+  "rating",
+  "low-high",
+  "high-low",
+];
 
-export const deliveryTime: string[] = ["Fast delivery", "Regular"];
-export const deliveryMap = new Map<number, string>([
-  [0, "fast"],
-  [1, "regular"],
-]);
+export const deliveryTime: string[] = ["fast", "regular"];
 
 export const cuisinesList: string[] = [
   "afghani",
@@ -77,20 +73,13 @@ export const cuisinesList: string[] = [
 ];
 
 export const exploreList: string[] = ["new", "most ordered", "hot right now"];
-export const exploreMap = new Map<number, string>([
-  [0, "new"],
-  [1, "popular"],
-  [2, "latest"],
-]);
+export const exploreParamsList: string[] = ["new", "popular", "hot"];
 
 export const ratings: string[] = ["rating 4.5+", "rating 4.0+", "rating 3.5+"];
-export const ratingMap = new Map<number, number>([
-  [0, 4.5],
-  [1, 4.0],
-  [2, 3.5],
-]);
+export const ratingParamsList: number[] = [4.5, 4.0, 3.5];
 
 export const foodTypeList: string[] = ["non veg", "pure veg"];
+export const foodParamsList: boolean[] = [false, true];
 
 // make veg and non-veg manually
 export const offersList: string[] = ["offers"];
@@ -108,7 +97,7 @@ export const typeList: string[] = [
   "starter",
   "rice",
   "dessert",
-  "main dishes",
+  "main dish",
   "drinks",
   "snacks",
   "soups",
@@ -120,20 +109,20 @@ export const paramsList: string[] = [
   "delivery",
   "cuisine",
   "explore",
-  "ratings",
+  "rating",
   "veg",
   "offer",
   "cost",
   "type",
 ];
 
-export const allCategories = new Map<number, string[]>([
-  [0, sortTypes],
+export const allCategories = new Map<number, string[] | number[] | boolean[]>([
+  [0, sortParamsList],
   [1, deliveryTime],
   [2, cuisinesList],
-  [3, exploreList],
-  [4, ratings],
-  [5, foodTypeList],
+  [3, exploreParamsList],
+  [4, ratingParamsList],
+  [5, foodParamsList],
   [6, offersList],
   [7, cost42List],
   [8, typeList],

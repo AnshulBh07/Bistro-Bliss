@@ -16,69 +16,14 @@ export const CheckBoxList: React.FC<IProps> = ({
   title,
 }) => {
   const dispatch: AppDispatch = useDispatch();
-  const { cuisines, explore, offers } = useSelector(
-    (state: RootState) => state.filter
-  );
+  const { appliedFilters } = useSelector((state: RootState) => state.filter);
 
-  const handleCheckboxOptionSelect = (category: number, value: number) => {
-    dispatch({ type: "filter/showBtns" });
-    // if the index is already present in set then delete it
-    // just create two different dispatches for when the value is included and when it isn't
-    if (category === 2) {
-      if (cuisines.includes(value))
-        dispatch({
-          type: "filter/cuisineRemove",
-          payload: { category: category, value: value },
-        });
-      else
-        dispatch({
-          type: "filter/cuisineAdd",
-          payload: { category: category, value: value },
-        });
-    }
-
-    if (category === 3) {
-      if (explore.includes(value)) {
-        dispatch({
-          type: "filter/exploreRemove",
-          payload: { category: category, value: value },
-        });
-      } else
-        dispatch({
-          type: "filter/exploreAdd",
-          payload: { category: category, value: value },
-        });
-    }
-
-    if (category === 6) {
-      if (offers.includes(value)) {
-        dispatch({
-          type: "filter/offerRemove",
-          payload: { category: category, value: value },
-        });
-      } else
-        dispatch({
-          type: "filter/offerAdd",
-          payload: { category: category, value: value },
-        });
-    }
+  const handleCheckBoxSelect = (index: number) => {
+    dispatch({
+      type: "filter/checkboxAdd",
+      payload: { category: category, index: index },
+    });
   };
-
-  let checkArr: number[];
-
-  switch (category) {
-    case 2:
-      checkArr = cuisines;
-      break;
-    case 3:
-      checkArr = explore;
-      break;
-    case 6:
-      checkArr = offers;
-      break;
-    default:
-      break;
-  }
 
   return (
     <div className={styles.options}>
@@ -95,13 +40,16 @@ export const CheckBoxList: React.FC<IProps> = ({
               type="checkbox"
               name={`${title}-type-${index + 1}`}
               id={`${title}-type-${index + 1}`}
-              onChange={() => handleCheckboxOptionSelect(category, index)}
+              onChange={() => handleCheckBoxSelect(index)}
             />
             {/* custom checkbox */}
             <div
               className={styles.checkbox}
               style={
-                checkArr.includes(index)
+                // if applied filters have current checkbox in it
+                appliedFilters.findIndex((item) => {
+                  return item.category === category && item.index === index;
+                }) !== -1
                   ? {
                       backgroundColor: "#ad343e",
                       border: "2px solid #ad343e",

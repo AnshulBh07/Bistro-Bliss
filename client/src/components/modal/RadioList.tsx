@@ -15,13 +15,7 @@ export const RadioList: React.FC<IProps> = ({
   title,
 }) => {
   const dispatch: AppDispatch = useDispatch();
-
-  const { selected } = useSelector((state: RootState) => state.filter);
-
-  const handleRadioOptionSelect = (category: number, index: number) => {
-    dispatch({ type: "filter/radioSelect", payload: { category, index } });
-    dispatch({ type: "filter/showBtns" });
-  };
+  const { appliedFilters } = useSelector((state: RootState) => state.filter);
 
   return (
     <div className={styles.options}>
@@ -38,16 +32,29 @@ export const RadioList: React.FC<IProps> = ({
               type="radio"
               name={title}
               id={`${title}-option-${index + 1}`}
-              onChange={() => handleRadioOptionSelect(category, index)}
+              onChange={() => {
+                dispatch({
+                  type: "filter/radioAdd",
+                  payload: { category: category, index: index },
+                });
+              }}
             />
             {/* custom circle */}
             <div
               className={styles.radio}
               style={{
-                border: selected[category] === index ? "" : "2px solid #474747",
+                // if the current radio button is present in applied filters
+                border:
+                  appliedFilters.findIndex((item) => {
+                    return item.category === category && item.index === index;
+                  }) !== -1
+                    ? ""
+                    : "2px solid #474747",
               }}
             >
-              {selected[category] === index && <span></span>}
+              {appliedFilters.findIndex((item) => {
+                return item.category === category && item.index === index;
+              }) !== -1 && <span></span>}
             </div>
             {item}
           </label>
