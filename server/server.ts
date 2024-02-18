@@ -1,4 +1,4 @@
-import express, { Request, Response, query } from "express";
+import express, { NextFunction, Request, Response, query } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -12,6 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(ignoreFavicon);
 const port = process.env.PORT || 3001;
 
 let db: any;
@@ -28,6 +29,13 @@ connectToDb((err) => {
 app.get("/", (req: Request, res: Response) => {
   res.send("on the server").status(200);
 });
+
+function ignoreFavicon(req: Request, res: Response, next: NextFunction) {
+  if (req.originalUrl.includes("favicon.ico")) {
+    res.status(204).end();
+  }
+  next();
+}
 
 app.get("/hello", (req: Request, res: Response) => {
   res.send("hello this is second route");
