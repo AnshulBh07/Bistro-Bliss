@@ -34,9 +34,6 @@ app.get("/hello", (req: Request, res: Response) => {
 });
 
 app.get("/menu_items", async (req: Request, res: Response) => {
-  // const cuisines = req.query.cuisines;
-
-  // console.log(cuisines?.length);
   try {
     let query = {};
     // the data received is in it's original form but the data when sent is converted to
@@ -48,18 +45,18 @@ app.get("/menu_items", async (req: Request, res: Response) => {
       .sort({ title: 1 })
       .toArray(); //this here returns a cursor/ iterator, iterate it and push stuff to array
 
-    // // now let us filter this data
-    // if (req.query.paramsObject) {
-    //   const allParams = String(req.query.paramsObject);
-    //   const paramsObj: paramsObjectType = JSON.parse(allParams);
-    //   results = filterResults(results, paramsObj);
-    // }
+    // now let us filter this data
+    if (req.query.paramsObject) {
+      const allParams = String(req.query.paramsObject);
+      const paramsObj: paramsObjectType = JSON.parse(allParams);
+      results = filterResults(results, paramsObj);
+    }
 
-    // // apply pagination
-    // if (req.query.page) {
-    //   const page = Number(req.query.page);
-    //   results = results.slice(8 * page, 8 * page + 8);
-    // }
+    // apply pagination
+    if (req.query.page) {
+      const page = Number(req.query.page);
+      results = results.slice(8 * page, 8 * page + 8);
+    }
 
     res.send(results).status(200);
   } catch (err) {

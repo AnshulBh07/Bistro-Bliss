@@ -14,11 +14,7 @@ export const fetchMenuItems = async (
       url: "http://localhost:3001/menu_items",
       params: {
         page: pageNum,
-        sort: paramsObject.sort,
-        delivery: paramsObject.delivery,
-        cuisines: paramsObject.cuisines,
-        explore: paramsObject.explore,
-        rating: paramsObject.rating,
+        paramsObj: paramsObject,
       },
     });
 
