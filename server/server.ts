@@ -29,6 +29,10 @@ app.get("/", (req: Request, res: Response) => {
   res.send("on the server").status(200);
 });
 
+app.get("/hello", (req: Request, res: Response) => {
+  res.send("hello this is second route");
+});
+
 app.get("/menu_items", async (req: Request, res: Response) => {
   const page = Number(req.query.page);
   const allParams = String(req.query.paramsObject);
