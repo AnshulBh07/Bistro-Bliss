@@ -14,7 +14,7 @@ export const fetchMenuItems = async (
       url: "http://localhost:3001/menu_items",
       params: {
         page: pageNum,
-        paramsObj: JSON.stringify(paramsObject),
+        paramsObject: JSON.stringify(paramsObject),
       },
     });
 

@@ -65,7 +65,7 @@ app.get("/menu_items", async (req: Request, res: Response) => {
     // apply pagination
     if (page) results = results.slice(8 * pageNum, 8 * pageNum + 8);
 
-    res.send(results).status(200);
+    res.json(results).status(200);
   } catch (err) {
     res.send(err).status(400);
   }
