@@ -1,0 +1,57 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.circle_base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-color: rgba(256, 256, 256, 0.3);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  animation: appear 1s ease forwards;
+
+  .arc {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 50%;
+    left: 50%;
+    background-color: white;
+    animation: spin 1.5s linear infinite;
+    transform-origin: bottom left;
+  }
+
+  .circle_top {
+    height: 70%;
+    width: 70%;
+    background-color: $icon-bg;
+    border-radius: 50%;
+    position: absolute;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg) skew(-30deg, -30deg);
+  }
+  50% {
+    transform: rotateZ(180deg) skew(20deg, 20deg);
+  }
+  100% {
+    transform: rotateZ(360deg) skew(-30deg, -30deg);
+  }
+}
+
+@keyframes appear {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+  }
+}

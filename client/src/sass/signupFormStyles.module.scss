@@ -1,0 +1,37 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.form_wrapper {
+  @include flexProp(column, 1rem, flex-start, center);
+  width: auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 20px rgba($color: $card-bg, $alpha: 0.5);
+
+  .name {
+    @include flexProp(row, 0.5rem, center, center);
+
+    .input_label {
+      @include formInput;
+      width: 15rem;
+    }
+  }
+
+  .input_label {
+    @include formInput;
+  }
+
+  .terms {
+    font-family: "dm sans", sans-serif;
+    @include formCheckbox;
+    gap: 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .signup_btn {
+    @include BtnRed;
+    margin-top: 1rem;
+  }
+}

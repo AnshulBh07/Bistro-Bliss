@@ -14,7 +14,6 @@ interface IProps {
 export const CartModal: React.FC<IProps> = ({ timeoutId }) => {
   const dispatch: AppDispatch = useDispatch();
   const { cartData, cartTotal } = useSelector((state: RootState) => state.cart);
-  console.log(cartData);
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutId);

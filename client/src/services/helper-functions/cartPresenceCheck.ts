@@ -1,7 +1,7 @@
-import { ICartData } from "./interfaces";
+import { ICartItem } from "./interfaces";
 
-export const isPresentInCart: (arr: ICartData[], id: string) => boolean = (
-  cartData: ICartData[],
+export const isPresentInCart: (arr: ICartItem[], id: string) => boolean = (
+  cartData: ICartItem[],
   id: string
 ) => {
   for (let i = 0; i < cartData.length; i++) {

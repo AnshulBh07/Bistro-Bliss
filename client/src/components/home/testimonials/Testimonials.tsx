@@ -26,7 +26,7 @@ export const Testimonials: React.FC = () => {
         className={styles.slider_wrapper}
       >
         {testimonialsList.map((item, index) => {
-          console.log(index);
+          // console.log(index);
           return (
             <SwiperSlide key={index}>
               <TestimonialCard data={item} />

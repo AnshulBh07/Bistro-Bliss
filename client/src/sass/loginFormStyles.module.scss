@@ -1,0 +1,105 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.form_wrapper {
+  @include flexProp(column, 2rem, flex-start, center);
+  width: auto;
+  padding: 3rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 20px rgba($color: $card-bg, $alpha: 0.5);
+
+  .login_form {
+    @include flexProp(column, 1.5rem, flex-start, center);
+
+    .input_label {
+      @include formInput;
+      width: 18rem;
+    }
+
+    .options_wrapper {
+      @include flexProp(row, 0rem, space-between, center);
+      font-weight: 600;
+      font-family: "dm sans", sans-serif;
+      font-size: 0.8rem;
+
+      .remember_label {
+        @include formCheckbox;
+      }
+
+      a {
+        text-decoration: none;
+        color: rgba($color: $card-bg, $alpha: 0.6);
+        font-size: 0.8rem;
+      }
+    }
+
+    .login_btn {
+      @include BtnRed;
+    }
+
+    .signup {
+      font-family: "dm sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      @include flexProp(row, 0.3rem, center, center);
+
+      p {
+        color: rgba($color: $card-bg, $alpha: 0.6);
+      }
+
+      .enable_signup_btn {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $icon-bg;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .separator {
+    @include flexProp(row, 0rem, center, center);
+    width: 100%;
+    border: 1px solid rgba($color: $footer-text, $alpha: 0.8);
+    position: relative;
+
+    &::before {
+      content: "Login with";
+      position: absolute;
+      background-color: #fff;
+      padding: 0rem 0.5rem;
+      z-index: 5;
+      font-family: "dm sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba($color: $footer-text, $alpha: 0.9);
+    }
+  }
+
+  .methods_btn_wrapper {
+    @include flexProp(row, 1rem, center, center);
+
+    .social_login_btn {
+      height: 3rem;
+      width: 3rem;
+      display: grid;
+      place-items: center;
+      background-color: transparent;
+      border: 1px solid rgba($color: $link-active, $alpha: 0.8);
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 2px 2px 10px rgba($color: $card-bg, $alpha: 0.2);
+      }
+
+      .icon {
+        height: 50%;
+        width: 50%;
+      }
+    }
+  }
+}

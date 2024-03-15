@@ -138,8 +138,9 @@
 
       .send_btn {
         @include BtnWhite;
-        width: 100%;
+        @include flexProp(row, 0.7rem, center, center);
         border-color: $icon-bg;
+        max-height: 3rem;
         color: #fff;
         font-size: 1rem;
         background-color: $icon-bg;
@@ -175,5 +176,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes btnSlide {
+  0% {
+    transform: translateX(0rem);
+  }
+  100% {
+    transform: translateX(1rem);
   }
 }

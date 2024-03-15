@@ -60,6 +60,21 @@
   }
 }
 
+@mixin BtnRed {
+  @include flexProp(row, 0.5rem, center, center);
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "DM sans", sans-serif;
+  text-transform: uppercase;
+  border-radius: 20px;
+  background-color: $icon-bg;
+  border: 2px solid $icon-bg;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
 @mixin modalCloseBtn {
   height: 1.8rem;
   width: 1.8rem;
@@ -79,5 +94,64 @@
 
   &:active {
     scale: 0.95;
+  }
+}
+
+@mixin formInput {
+  @include flexProp(row, 0.5rem, flex-start, center);
+  border: 1px solid rgba($color: $footer-text, $alpha: 0.8);
+  padding: 0.7rem 1.2rem;
+  border-radius: 30px;
+  background-color: rgba($color: $link-active, $alpha: 0.3);
+
+  .form_icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    flex-shrink: 0;
+    color: rgba($color: $card-bg, $alpha: 0.5);
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    font-family: "dm sans", sans-serif;
+    font-size: 1rem;
+    background-color: transparent;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgba($color: $card-bg, $alpha: 0.5);
+      text-transform: capitalize;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+}
+
+@mixin formCheckbox {
+  @include flexProp(row, 0.3rem, flex-start, center);
+  width: auto;
+  color: rgba($color: $card-bg, $alpha: 0.6);
+  cursor: pointer;
+
+  span {
+    height: 1.3rem;
+    width: 1.3rem;
+    border: 1px solid rgba($color: $footer-text, $alpha: 0.8);
+    border-radius: 5px;
+    background-color: rgba($color: $link-active, $alpha: 0.3);
+    display: grid;
+    place-items: center;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  input[type="checkbox"] {
+    display: none;
   }
 }

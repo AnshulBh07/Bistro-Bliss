@@ -1,0 +1,168 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container__main {
+  @include flexProp(row, 0rem, center, center);
+  height: 100vh;
+  position: relative;
+
+  .bg_wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: antiquewhite;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .logo_wrapper {
+    @include flexProp(column, 0rem, center, center);
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #fff;
+    top: 3rem;
+    left: 8rem;
+    z-index: 2;
+
+    img {
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+    }
+
+    &::before {
+      content: "Bistro Bliss";
+      position: absolute;
+      bottom: -2.6rem;
+      font-weight: 600;
+      font-family: "playfair display", sans-serif;
+      font-style: italic;
+      font-size: 2rem;
+      white-space: nowrap;
+      color: $icon-bg;
+    }
+  }
+
+  .contents {
+    @include flexProp(column, 0rem, space-between, center);
+    height: 100%;
+    width: 80%;
+    // background-color: antiquewhite;
+    position: relative;
+
+    .title_form_container {
+      @include flexProp(column, 2rem, center, center);
+      padding-top: 3rem;
+      height: 80%;
+
+      .title {
+        @include flexProp(column, 0.7rem, flex-start, center);
+
+        .heading {
+          font-family: "playfair display", sans-serif;
+          font-weight: 600;
+          font-size: 3rem;
+          text-transform: capitalize;
+        }
+
+        .text {
+          font-family: "dm sans", sans-serif;
+          font-size: 1rem;
+          font-weight: 600;
+          color: rgba($color: $card-bg, $alpha: 0.5);
+
+          span {
+            color: $icon-bg;
+          }
+        }
+      }
+    }
+
+    .footer {
+      @include flexProp(row, 0rem, space-between, flex-start);
+      border-top: 2px solid rgba($color: $card-bg, $alpha: 0.2);
+      padding: 1.5rem 1rem;
+      height: 12%;
+
+      .redirects {
+        @include flexProp(row, 4rem, flex-start, flex-start);
+        list-style-type: none;
+        font-family: "dm sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: capitalize;
+
+        li {
+          a {
+            text-decoration: none;
+            color: rgba($color: $card-bg, $alpha: 1);
+          }
+        }
+      }
+
+      .social_wrapper {
+        @include flexProp(column, 0.5rem, flex-start, flex-end);
+        font-family: "dm sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: rgba($color: $card-bg, $alpha: 0.5);
+
+        .social_media {
+          @include flexProp(row, 0.5rem, flex-end, flex-start);
+          list-style-type: none;
+
+          li {
+            .social_btn {
+              display: grid;
+              place-items: center;
+              background-color: transparent;
+              cursor: pointer;
+              border: none;
+              height: 1.5rem;
+              width: 1.5rem;
+              position: relative;
+
+              .social_icon {
+                height: 100%;
+                width: 100%;
+                color: rgba($color: $card-bg, $alpha: 0.5);
+              }
+
+              &:hover {
+                .social_icon {
+                  color: rgba($color: $card-bg, $alpha: 1);
+                }
+
+                span {
+                  visibility: visible;
+                }
+              }
+
+              span {
+                position: absolute;
+                padding: 0.2rem 0.5rem;
+                background-color: rgba($color: #000000, $alpha: 0.8);
+                color: #fff;
+                border-radius: 5px;
+                white-space: nowrap;
+                top: -1.6rem;
+                text-transform: capitalize;
+                visibility: hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

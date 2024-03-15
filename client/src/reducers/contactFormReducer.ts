@@ -1,10 +1,4 @@
-// define the structure of form data
-interface IContactFormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+import { IContactFormData } from "../services/helper-functions/interfaces";
 
 const initialState: IContactFormData = {
   name: "",
@@ -16,13 +10,13 @@ const initialState: IContactFormData = {
 export const contactFormReducer = (state = initialState, action) => {
   switch (action.type) {
     case "contactForm/name":
-      return { ...state, name: action.payload };
+      return { ...state, name: action.payload! };
     case "contactForm/email":
-      return { ...state, email: action.payload };
+      return { ...state, email: action.payload! };
     case "contactForm/subject":
-      return { ...state, subject: action.payload };
+      return { ...state, subject: action.payload! };
     case "contactForm/message":
-      return { ...state, message: action.payload };
+      return { ...state, message: action.payload! };
     default:
       return state;
   }

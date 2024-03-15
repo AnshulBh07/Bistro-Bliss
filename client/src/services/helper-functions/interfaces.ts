@@ -1,3 +1,11 @@
+// define the structure of form data
+export interface IContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 // filter data structure
 export type applied = {
   category: number;
@@ -74,3 +82,35 @@ export type paramsObjectType = {
   type: string | null;
   keyword: string | null;
 };
+
+export interface IToast {
+  showToast: boolean;
+  message: string;
+  status: "success" | "warning" | "error" | "notice";
+  state: string;
+}
+
+export interface ILinks {
+  text?: string;
+  icon?: string | JSX.Element;
+  link: string;
+  name?: string;
+}
+
+export interface ILoginState {
+  email: string;
+  password: string;
+  remember: boolean;
+  show: boolean;
+  isAuthenticated: boolean;
+}
+
+export interface ISignupState {
+  first_name: string;
+  last_name: string;
+  username: string;
+  email: string;
+  password: string;
+  terms: boolean;
+  show: boolean;
+}

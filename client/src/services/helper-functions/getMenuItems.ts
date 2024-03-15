@@ -11,7 +11,7 @@ export const fetchMenuItems = async (
     const response = await axios({
       signal: signal,
       method: "get",
-      url: "http://localhost:3001/menu_items",
+      url: "https://bistro-bliss-backend-1.onrender.com/menu",
       params: {
         page: pageNum,
         paramsObject: JSON.stringify(paramsObject),

@@ -10,13 +10,18 @@ import { CartModal } from "../modal/CartModal";
 import { useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { useDispatch } from "react-redux";
+import { verifyToken } from "../../services/helper-functions/loginFormRequests";
+import { setToast } from "../../services/helper-functions/setToast";
 
 const Header: React.FC = () => {
   const navigate: NavigateFunction = useNavigate();
   const location = useLocation();
   const { pathname } = location;
-  const { showCartModal } = useSelector((state: RootState) => state.cart);
+  const { showCartModal, cartData } = useSelector(
+    (state: RootState) => state.cart
+  );
   const dispatch: AppDispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state: RootState) => state.login);
 
   // here we will use a useEffect which contains an intersection observer that observes Topbar,
   // when top bar goes out of view the navbar will become sticky (position fixed)
@@ -46,7 +51,46 @@ const Header: React.FC = () => {
     return () => observer.disconnect();
   }, [isVisible]);
 
-  // console.log(isVisible);
+  const handleLogoutClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    // what we do when logout is clicked
+    // 1. delete tokens from session storage
+    // 2. set authenticated to false;
+    dispatch({ type: "login/authenticate" });
+    sessionStorage.removeItem("tokens");
+  };
+
+  let timer: NodeJS.Timeout;
+
+  const handleLoginClick = async () => {
+    // what we do when login is clicked
+    // 1. first check for presence of persistent token, if it's there no need to redirect to /login and perform auto login after verifying from the server
+    const persist_token = localStorage.getItem("persistent_token");
+
+    if (persist_token !== null) {
+      const token = JSON.parse(persist_token);
+      // console.log(token);
+      const response = await verifyToken(token);
+      // console.log(response);
+
+      if (response) {
+        //error
+        if (response.status === 401 || response.status === 500) {
+          setToast("error", response.data, dispatch, timer);
+          timer = setTimeout(() => navigate("/login"), 4000);
+          return;
+        }
+
+        //success, store newly got access and refresh token in session storage
+        sessionStorage.setItem("tokens", response.data);
+        dispatch({ type: "login/authenticate" });
+      }
+    } else {
+      //persistent token doesn't exist
+      navigate("/login");
+    }
+  };
 
   return (
     <header className={styles.container}>
@@ -110,6 +154,16 @@ const Header: React.FC = () => {
             book a table
           </button>
 
+          {isAuthenticated ? (
+            <button className={styles.login_btn} onClick={handleLogoutClick}>
+              logout
+            </button>
+          ) : (
+            <button className={styles.login_btn} onClick={handleLoginClick}>
+              login
+            </button>
+          )}
+
           <button
             className={styles.cart_btn}
             onMouseEnter={() => dispatch({ type: "cart/show" })}
@@ -122,7 +176,7 @@ const Header: React.FC = () => {
             }}
           >
             <GiShoppingBag className={styles.icon} />
-            <p>1</p>
+            <p>{cartData.length}</p>
           </button>
         </div>
 

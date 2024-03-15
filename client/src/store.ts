@@ -3,6 +3,9 @@ import { contactFormReducer } from "./reducers/contactFormReducer";
 import { filterReducer } from "./reducers/filterReducer";
 import { menuItemReducer } from "./reducers/menuItemReducer";
 import { cartReducer } from "./reducers/cartReducer";
+import { toastReducer } from "./reducers/toastReducer";
+import { loginReducer } from "./reducers/loginFormReducer";
+import { signupReducer } from "./reducers/signupFormReducer";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +13,9 @@ export const store = configureStore({
     filter: filterReducer,
     menuItem: menuItemReducer,
     cart: cartReducer,
+    toast: toastReducer,
+    login: loginReducer,
+    signup: signupReducer,
   },
 });
 
